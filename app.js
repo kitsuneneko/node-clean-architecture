@@ -12,7 +12,8 @@ const server = app.listen(PORT, () => {
 });
 
 // routes
-app.use("/api/users", require("./src/controllers/userController"));
+// app.use("/")
+app.use("/api", require("./src/controllers/userController"));
 
 
 // when invalid routes are entered

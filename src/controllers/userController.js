@@ -1,9 +1,22 @@
-const { getUser } = require("../services/userService.js");
+const userService = require("../services/userService.js");
+const db = require('../models');
+
+const authService = require('../services/authService.js');
 
 
-const userController = (router) => {
-  router.get("/users/:id", getUser);
-}
+const { Router } = require('express');
+// const bodyParser = require('body-parser');
 
-// export default userController;
-module.exports = userController;
+const router = Router();
+  router.get('/users', userService.getUsers);
+  router.post('/user/new', userService.createUser);
+  router.get("/user/:id", userService.getUser);
+  router.patch("/user/:id", userService.updateUser);
+  router.delete("/user/:id", userService.deleteUser);
+  router.post('/login', authService.login);
+  // router.get('/login', (req, res, next) => {
+  //   res.send(200);
+  // });
+
+
+module.exports = router;
