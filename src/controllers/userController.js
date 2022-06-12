@@ -14,6 +14,8 @@ const router = Router();
   router.patch("/user/:id", userService.updateUser);
   router.delete("/user/:id", userService.deleteUser);
   router.post('/login', authService.login);
+  router.post('/registration', authService.registration);
+
   // router.get('/login', (req, res, next) => {
   //   res.send(200);
   // });

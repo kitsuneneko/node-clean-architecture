@@ -8,8 +8,12 @@ const db = require('../models');
 
 const createUser = async (req, res, next) => {
   try {
-    const data = req.body;
-    const user = await db.User.create(data); 
+    const userData = { 
+      username: req.body.username,
+      password: req.body.password,
+      email: req.body.email
+    }
+    const user = await db.User.create(userData); 
     res.send(user);
   } catch (err) {
     res.send(err);

@@ -1,0 +1,79 @@
+###
+GET http://localhost:3000/api/users
+
+###
+GET http://localhost:3000/api/user/8
+
+### 
+DELETE http://localhost:3000/api/user/3
+
+###
+POST http://localhost:3000/api/user/new HTTP/1.1
+content-type: application/json
+
+{
+    "username": "user1",
+    "password": "password",
+    "email": "email@mail.com"
+}
+
+###
+POST http://localhost:3000/api/login HTTP/1.1
+content-type: application/json
+
+{
+    "username": "user1",
+    "password": "password"
+}
+
+###
+POST http://localhost:3000/api/registration HTTP/1.1
+content-type: application/json
+
+{
+    "username": "user1",
+    "password": "password",
+    "confirm_password": "password",
+    "email": "email@mail.com"
+}
+
+###
+GET http://localhost:3000/api/login
+
+
+
+
+
+
+###
+PATCH http://localhost:3000/api/user/8 HTTP/1.1
+content-type: application/json
+
+{
+    "username": "user2",
+    "password": "password2"
+}
+
+### 2)
+POST https://trollauthapp.herokuapp.com/users/new HTTP/1.1
+content-type: application/json
+
+    {
+        "email": "troll123@gmail.com",
+        "password": "Red1yay2345",
+        "username": "troll123",
+        "role": 1
+    }
+
+###
+POST https://trollauthapp.herokuapp.com/auth/login HTTP/1.1
+content-type: application/json
+
+    {
+      "password": "Red1yay2345",
+      "username": "troll123"
+    } 
+
+###
+GET https://trollauthapp.herokuapp.com/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRyb2xsMTIzIiwic3ViIjoyOCwiaWF0IjoxNjUyMzU2MjA5LCJleHAiOjE2NTIzNTY1MDl9.YDjeROLpRIFxOd2sUkfb_-oY6kp9SN9Wd3USjzb9FpA
