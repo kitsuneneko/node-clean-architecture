@@ -1,9 +1,5 @@
 
 const db = require('../models');
-// const userSchema
-
-// const Login = () => {};
-// const Rre
 
 
 const createUser = async (req, res, next) => {

@@ -16,9 +16,5 @@ const router = Router();
   router.post('/login', authService.login);
   router.post('/registration', authService.registration);
 
-  // router.get('/login', (req, res, next) => {
-  //   res.send(200);
-  // });
-
 
 module.exports = router;
