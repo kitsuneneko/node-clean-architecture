@@ -1,4 +1,3 @@
-const userService = require('./userService');
 const db = require('../models');
 const jwt = require('jsonwebtoken');
 

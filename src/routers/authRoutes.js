@@ -1,11 +1,13 @@
-const authService = require('../services/authService.js');
-const userService = require("../services/userService.js");
+const authController = require('../controllers/authController.js');
+const userController = require("../controllers/userController.js");
 const validator = require('../middlewares/validation/Validator')
 const { Router } = require('express');
 
 
 const router = Router();
-  router.post('/login', authService.login);
-  router.post('/registration', validator.newUser, userService.createUser);
+
+  router.post('/login', authController.login);
+  router.post('/registration', validator.newUser, userController.createUser);
+  
 module.exports = router;
 

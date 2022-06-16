@@ -1,4 +1,3 @@
-
 const db = require('../models');
 
 
@@ -60,11 +59,9 @@ const getUser = async (req, res, next) => {
   try {
     const userData = await db.User.findOne({
       where: { id: req.params.id },
-      // rejectOnEmpty: true,
     });
 
     if(!userData) return res.status(404).send("NOT FOUND");
-    // if(!userData) return res.status(403);
 
     res.json(userData);
   } catch(err) {
@@ -73,7 +70,6 @@ const getUser = async (req, res, next) => {
   }
 };
 
-// export { getUser };
 module.exports = { 
   getUser,
   getUsers,

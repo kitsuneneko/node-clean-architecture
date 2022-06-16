@@ -15,7 +15,6 @@ const server = app.listen(PORT, () => {
 require("dotenv").config();
 
 // routes
-// app.use("/")
 app.use("/api", require('./src/middlewares/auth/AuthVerify'), require("./src/routers/userRoutes"));
 app.use("/auth", require("./src/routers/authRoutes"));
 
