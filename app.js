@@ -1,4 +1,6 @@
 const express = require('express');
+require("dotenv").config();
+
 
 const app = express();
 
@@ -10,10 +12,12 @@ const PORT = process.env.PORT || 3000;
 const server = app.listen(PORT, () => {
   console.log(`Server is listening on port ${PORT}.`);
 });
+require("dotenv").config();
 
 // routes
 // app.use("/")
-app.use("/api", require("./src/controllers/userController"));
+app.use("/api", require('./src/middlewares/auth/AuthVerify'), require("./src/routers/userRoutes"));
+app.use("/auth", require("./src/routers/authRoutes"));
 
 
 // when invalid routes are entered

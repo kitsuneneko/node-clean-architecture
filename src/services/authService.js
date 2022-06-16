@@ -1,6 +1,7 @@
-const jwtService = require('./jwtService')
-const userService = require('./userService')
-const db = require('../models')
+// const jwtService = require('./jwtService')
+const userService = require('./userService');
+const db = require('../models');
+const jwt = require('jsonwebtoken');
 
 const login = async (req, res, next) => {
   const user = req.body;
@@ -12,11 +13,15 @@ const login = async (req, res, next) => {
 
   if(!match) return res.status(401).send("NOT AUTHORIZED");
 
-
-  const access = await jwtService.generateJWT(match.id);
+  const token = jwt.sign(
+    { payload: match.id }, 
+    process.env.JWT_ACCESS_TOKEN_SECRET || 'secretphrase',
+    { expiresIn: process.env.JWT_EXPIRES_IN || '2m' }
+  );
+  // const access = await jwtService.generateJWT(match.id);
   // console.log('body: ', JSON.parse(data));
   res.send({
-    access_token: access
+    access_token: token
   });
 
   // res.send(200);
@@ -30,7 +35,9 @@ const registration = async (req, res, next) => {
     email: req.body.email
   }
   if(regData.password == regData.confirm_password) {
-    userService.createUser(JSON.stringify(regData));
+    next();
+  } else {
+    res.sendStatus(403);
   }
 
 }
