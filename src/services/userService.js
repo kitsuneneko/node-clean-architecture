@@ -10,7 +10,7 @@ const createUser = async (req, res, next) => {
       email: req.body.email
     }
     const user = await db.User.create(userData); 
-    res.send(user);
+    res.send(`Succesfully created new user`);
   } catch (err) {
     res.send(err);
   }

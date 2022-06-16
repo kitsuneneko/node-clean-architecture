@@ -1,15 +1,16 @@
 const Joi = require('joi');
 
 const authSchema = Joi.object({
-  username: Joi.string().min(3).max(40).required(),
+  username: Joi.string().min(3).max(30).required(),
   email: Joi.string().email().required(),
   password: Joi.string()
-    .pattern()
+    .min(6)
+    .max(25)
     .required(),
 })
 
-const authValidator = async (req, res, next) => {
-  const data = req.body;
+const newUser = async (req, res, next) => {
+  const body = req.body;
   const validation = authSchema.validate(body);
   if(!validation.error) {
     next();
@@ -19,4 +20,4 @@ const authValidator = async (req, res, next) => {
   }
 }
 
-module.exports = authValidator;
+module.exports = {newUser};
